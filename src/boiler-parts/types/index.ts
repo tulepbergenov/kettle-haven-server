@@ -36,7 +36,7 @@ class BoilerParts {
   @ApiProperty({ example: true })
   bestseller: boolean;
 
-  @ApiProperty({ example: true })
+  @ApiProperty({ example: false })
   new: boolean;
 
   @ApiProperty({ example: 123 })

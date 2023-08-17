@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { BoilerParts } from './boiler-parts.model';
-import { IBoilerPartsQuery } from './types';
 import { Op } from 'sequelize';
+import { BoilerParts } from './boiler-parts.model';
+import { IBoilerPartsFilter, IBoilerPartsQuery } from './types';
 
 @Injectable()
 export class BoilerPartsService {
@@ -16,10 +16,26 @@ export class BoilerPartsService {
   ): Promise<{ count: number; rows: BoilerParts[] }> {
     const limit = +query.limit;
     const offset = +query.offset * 20;
+    const filter = {} as Partial<IBoilerPartsFilter>;
+
+    if (query.priceFrom && query.priceTo) {
+      filter.price = {
+        [Op.between]: [+query.priceFrom, +query.priceTo],
+      };
+    }
+
+    if (query.boiler) {
+      filter.boiler_manufacturer = JSON.parse(decodeURIComponent(query.boiler));
+    }
+
+    if (query.parts) {
+      filter.parts_manufacturer = JSON.parse(decodeURIComponent(query.parts));
+    }
 
     return this.boilerPartsModel.findAndCountAll({
       limit,
       offset,
+      where: filter,
     });
   }
 
@@ -52,9 +68,7 @@ export class BoilerPartsService {
   ): Promise<{ count: number; rows: BoilerParts[] }> {
     return this.boilerPartsModel.findAndCountAll({
       limit: 20,
-      where: {
-        name: { [Op.like]: `%${str}%` },
-      },
+      where: { name: { [Op.like]: `%${str}%` } },
     });
   }
 }

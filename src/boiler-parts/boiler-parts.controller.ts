@@ -1,23 +1,19 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Param,
-  Post,
-  Query,
-  UseGuards,
-} from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
+import { Get } from '@nestjs/common';
+import { Param, Query, UseGuards } from '@nestjs/common';
 import { BoilerPartsService } from './boiler-parts.service';
-import { AuthenticatedGuard } from 'src/auth/authenticated.guard';
-import { ApiBody, ApiOkResponse } from '@nestjs/swagger';
-import { PaginateAndFilterResponse } from './types';
-import { FindOneResponse } from './types';
-import { GetNewResponse } from './types';
-import { GetBestsellersResponse } from './types';
-import { SearchResponse } from './types';
-import { SearchRequest } from './types';
-import { GetByNameResponse } from './types';
-import { GetByNameRequest } from './types';
+import { AuthenticatedGuard } from '../auth/authenticated.guard';
+import { ApiOkResponse, ApiBody } from '@nestjs/swagger';
+import {
+  PaginateAndFilterResponse,
+  FindOneResponse,
+  GetBestsellersResponse,
+  GetNewResponse,
+  SearchResponse,
+  SearchRequest,
+  GetByNameResponse,
+  GetByNameRequest,
+} from './types';
 
 @Controller('boiler-parts')
 export class BoilerPartsController {

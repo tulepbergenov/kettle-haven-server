@@ -1,10 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class LoginUserRequest {
-  @ApiProperty({ example: 'Jhon' })
+  @ApiProperty({ example: 'Ivan' })
   username: string;
 
-  @ApiProperty({ example: '31337' })
+  @ApiProperty({ example: 'ivan123' })
   password: string;
 }
 
@@ -13,8 +13,8 @@ export class LoginUserResponse {
     example: {
       user: {
         userId: 1,
-        username: 'Jhon',
-        password: '31337',
+        username: 'Ivan',
+        password: 'ivan123',
       },
     },
   })
@@ -29,7 +29,7 @@ export class LoginUserResponse {
 }
 
 export class LogoutUserResponse {
-  @ApiProperty({ example: 'Session has ended' })
+  @ApiProperty({ example: 'session has ended' })
   msg: string;
 }
 
@@ -37,37 +37,31 @@ export class LoginCheckResponse {
   @ApiProperty({ example: 1 })
   userId: number;
 
-  @ApiProperty({ example: 'Jhon' })
+  @ApiProperty({ example: 'Ivan' })
   username: string;
 
-  @ApiProperty({ example: 'jhon@gmail.com' })
+  @ApiProperty({ example: 'ivan@gmail.com' })
   email: string;
 }
 
-export class SignUpResponse {
+export class SignupResponse {
   @ApiProperty({ example: 1 })
   id: number;
 
-  @ApiProperty({ example: 'Jhon' })
+  @ApiProperty({ example: 'Ivan' })
   username: string;
 
   @ApiProperty({
-    example: '$2b$10$R0Ncn.qde1JqTCI1dcaTi.b6TTqXygUn3zyBqi0oAWoEzucexbo9a',
+    example: '$2b$10$90H0Hn.6Nx0SbrHQCX2xeeYjq.02nS5VpkIIwFAtDtCHEqHK',
   })
   password: string;
 
-  @ApiProperty({
-    example: 'jhon@gmail.com',
-  })
+  @ApiProperty({ example: 'ivan@gmail.com' })
   email: string;
 
-  @ApiProperty({
-    example: '2023-05-02T10:06:34.575Z',
-  })
+  @ApiProperty({ example: '2023-03-17T17:23:33.502Z' })
   updatedAt: string;
 
-  @ApiProperty({
-    example: '2023-05-02T10:06:34.575Z',
-  })
+  @ApiProperty({ example: '2023-03-17T17:23:33.502Z' })
   createdAt: string;
 }

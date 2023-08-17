@@ -1,4 +1,4 @@
-import { Column, Model, Table } from 'sequelize-typescript';
+import { Table, Model, Column } from 'sequelize-typescript';
 
 @Table
 export class BoilerParts extends Model {
@@ -12,7 +12,7 @@ export class BoilerParts extends Model {
   parts_manufacturer: string;
 
   @Column
-  vendor_code: number;
+  vendor_code: string;
 
   @Column
   name: string;
